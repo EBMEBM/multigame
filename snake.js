@@ -1,19 +1,29 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
+const gameOverText = document.getElementById('gameOverText');
 
 const box = 20;
 const canvasSize = 20;
 const canvasWidth = canvas.width / box;
 const canvasHeight = canvas.height / box;
 
-let snake = [];
-snake[0] = { x: 9 * box, y: 10 * box };
-
+let snake;
 let direction;
-let food = {
-    x: Math.floor(Math.random() * canvasWidth) * box,
-    y: Math.floor(Math.random() * canvasHeight) * box
-};
+let food;
+let game;
+
+function init() {
+    snake = [];
+    snake[0] = { x: 9 * box, y: 10 * box };
+    direction = null;
+    food = {
+        x: Math.floor(Math.random() * canvasWidth) * box,
+        y: Math.floor(Math.random() * canvasHeight) * box
+    };
+    gameOverText.textContent = '';
+    if (game) clearInterval(game);
+    game = setInterval(draw, 100);
+}
 
 document.addEventListener('keydown', setDirection);
 
@@ -26,6 +36,8 @@ function setDirection(event) {
         direction = 'RIGHT';
     } else if (event.keyCode === 40 && direction !== 'UP') {
         direction = 'DOWN';
+    } else if (event.keyCode === 82) { // tecla 'R'
+        init();
     }
 }
 
@@ -78,10 +90,10 @@ function draw() {
         collision(newHead, snake)
     ) {
         clearInterval(game);
-        alert('Game Over');
+        gameOverText.textContent = 'Game Over! Press R to Restart.';
     }
 
     snake.unshift(newHead);
 }
 
-const game = setInterval(draw, 100);
+init();

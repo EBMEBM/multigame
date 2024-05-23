@@ -1,27 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake Game</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Snake</a></li>
-                <!-- Afegir altres jocs aquí -->
+<html lang="es">
+    <head>
+        <title>Multijuego</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/menu.css">
+    </head>
+    <body>
+        <div class="maxcenter">
+            <h1>Multijuegos</h1>
+            <ul class="flex">
+                <li>
+                    <a href="snake/index.html">
+                        <div class="menubutton">
+                            <img class="gameicon" src="img/serpiente.jpg"><br>
+                            <span>Snake</span>
+                        </div>
+                    </a>
+                    
+                </li>
             </ul>
-        </nav>
-    </header>
-    <main>
-        <h1>Snake Game</h1>
-        <p id="score">Score: 0</p>
-        <canvas id="gameCanvas" width="400" height="400"></canvas>
-        <p id="gameOverText"></p>
-    </main>
-    <script src="snake.js"></script>
-</body>
+        </div>
+    </body>
 </html>
-

@@ -1,18 +1,52 @@
 body {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    height: 100vh;
+    align-items: center;
     margin: 0;
     background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    width: 100%;
+    background-color: #333;
+    padding: 10px 0;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
 }
 
 h1 {
-    font-family: Arial, sans-serif;
+    margin-top: 20px;
     color: #333;
+}
+
+#score {
+    font-size: 20px;
+    margin: 10px 0;
 }
 
 canvas {
     border: 1px solid #000;
+}
+
+#gameOverText {
+    font-size: 18px;
+    color: red;
+    margin-top: 10px;
 }

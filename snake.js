@@ -1,6 +1,7 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const gameOverText = document.getElementById('gameOverText');
+const scoreText = document.getElementById('score');
 
 const box = 20;
 const canvasSize = 20;
@@ -10,17 +11,20 @@ const canvasHeight = canvas.height / box;
 let snake;
 let direction;
 let food;
+let score;
 let game;
 
 function init() {
     snake = [];
     snake[0] = { x: 9 * box, y: 10 * box };
     direction = null;
+    score = 0;
     food = {
         x: Math.floor(Math.random() * canvasWidth) * box,
         y: Math.floor(Math.random() * canvasHeight) * box
     };
     gameOverText.textContent = '';
+    scoreText.textContent = 'Score: ' + score;
     if (game) clearInterval(game);
     game = setInterval(draw, 100);
 }
@@ -76,6 +80,8 @@ function draw() {
             x: Math.floor(Math.random() * canvasWidth) * box,
             y: Math.floor(Math.random() * canvasHeight) * box
         };
+        score++;
+        scoreText.textContent = 'Score: ' + score;
     } else {
         snake.pop();
     }

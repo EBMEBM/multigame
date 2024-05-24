@@ -2,7 +2,7 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
 let bird = { x: 50, y: 150, width: 20, height: 20 };
-let gravity = 0.3;
+let gravity = 0.25; // Ajust de la gravetat per a una caiguda més suau
 let lift = -6;
 let velocity = 0;
 let pipes = [];

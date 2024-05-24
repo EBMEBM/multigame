@@ -2,18 +2,23 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
 let bird = { x: 50, y: 150, width: 20, height: 20 };
-let gravity = 0.6;
-let lift = -10;
+let gravity = 0.3;
+let lift = -6;
 let velocity = 0;
 let pipes = [];
 let frameCount = 0;
 let score = 0;
 const gap = 100;
 const pipeWidth = 20;
+let isGameStarted = false;
 
 document.addEventListener('keydown', (e) => {
     if (e.code === 'Space') {
         velocity = lift;
+        if (!isGameStarted) {
+            isGameStarted = true;
+            setTimeout(loop, 2000); // Retard de 2 segons abans de començar el joc
+        }
     } else if (e.code === 'KeyR') {
         restart();
     }
@@ -25,8 +30,10 @@ function restart() {
     pipes = [];
     frameCount = 0;
     score = 0;
+    isGameStarted = false;
     document.getElementById('gameOverText').textContent = '';
-    loop();
+    document.getElementById('score').textContent = 'Score: ' + score;
+    loop(); // Comença el joc immediatament sense retard
 }
 
 function loop() {

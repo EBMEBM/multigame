@@ -8,7 +8,7 @@ let velocity = 0;
 let pipes = [];
 let frameCount = 0;
 let score = 0;
-const gap = 100;
+const gap = 150; // Augmenta la separació entre els tubs
 const pipeWidth = 20;
 const pipeSpeed = 2; // Velocitat constant de les canonades
 let isGameStarted = false;
@@ -51,7 +51,7 @@ function update() {
     velocity += gravity;
     bird.y += velocity;
 
-    if (frameCount % 75 === 0) {
+    if (frameCount % 100 === 0) { // Augmenta la separació temporal entre les canonades
         let pipeHeight = Math.floor(Math.random() * (canvas.height - gap));
         pipes.push({ x: canvas.width, y: pipeHeight });
     }

@@ -2,8 +2,8 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
 let bird = { x: 50, y: 150, width: 20, height: 20 };
-let gravity = 1.5;
-let lift = -15;
+let gravity = 0.6;
+let lift = -10;
 let velocity = 0;
 let pipes = [];
 let frameCount = 0;

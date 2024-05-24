@@ -10,6 +10,7 @@ let frameCount = 0;
 let score = 0;
 const gap = 100;
 const pipeWidth = 20;
+const pipeSpeed = 2; // Velocitat constant de les canonades
 let isGameStarted = false;
 
 document.addEventListener('keydown', (e) => {
@@ -56,7 +57,7 @@ function update() {
     }
 
     for (let i = pipes.length - 1; i >= 0; i--) {
-        pipes[i].x -= 2;
+        pipes[i].x -= pipeSpeed; // Utilitza la velocitat constant
 
         if (pipes[i].x + pipeWidth < 0) {
             pipes.splice(i, 1);

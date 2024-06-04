@@ -61,6 +61,7 @@ function keyDownHandler(e) {
         leftPressed = true;
     } else if (e.key === ' ') {
         spacePressed = true;
+        shootBullet();
     }
 }
 
@@ -75,6 +76,14 @@ function keyUpHandler(e) {
 }
 
 function movePlayer() {
+    if (rightPressed) {
+        player.dx = player.speed;
+    } else if (leftPressed) {
+        player.dx = -player.speed;
+    } else {
+        player.dx = 0;
+    }
+
     player.x += player.dx;
 
     if (player.x < 0) {
@@ -87,15 +96,13 @@ function movePlayer() {
 }
 
 function shootBullet() {
-    if (spacePressed) {
-        bullets.push({
-            x: player.x + player.width / 2 - bulletWidth / 2,
-            y: player.y,
-            width: bulletWidth,
-            height: bulletHeight,
-            dy: -bulletSpeed
-        });
-    }
+    bullets.push({
+        x: player.x + player.width / 2 - bulletWidth / 2,
+        y: player.y,
+        width: bulletWidth,
+        height: bulletHeight,
+        dy: -bulletSpeed
+    });
 }
 
 function moveBullets() {
